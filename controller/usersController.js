@@ -96,6 +96,21 @@ class Controller {
         })
     }
 
+    static delete (req,res){
+        const {id}= req.params
+        users.destroy({
+            where:{
+                id:id
+            }
+        })
+        .then(data=>{
+            res.json("data telah berhasil di hapus")
+        })
+        .catch(err=>{
+            res.json(err)
+        })
+    }
+
 }
 
 
