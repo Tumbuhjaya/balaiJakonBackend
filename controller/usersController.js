@@ -21,7 +21,7 @@ createSuperUser()
 class Controller {
 
     static register(req, res){
-        const {username,password,role,nama,alamat,noHp,tempatLahir,tanggalLahir,noKTP}= req.body
+        const {username,password,role,nama,alamat,noHp,tempatLahir,tanggalLahir,noKTP,email}= req.body
         
         let encryptedPassword = bcrypt.hashPassword(password)
         users.findAll({
@@ -34,7 +34,7 @@ class Controller {
             }
             else{
                 
-                users.create({username:username, password:encryptedPassword,nama:nama,alamat:alamat,role:role,noHp:noHp,tempatLahir:tempatLahir,tanggalLahir:tanggalLahir,noKTP:noKTP}, {returning: true}).then(respon =>{
+                users.create({username:username, password:encryptedPassword,nama:nama,alamat:alamat,role:role,noHp:noHp,tempatLahir:tempatLahir,tanggalLahir:tanggalLahir,noKTP:noKTP,email:email}, {returning: true}).then(respon =>{
                 res.json(respon)
              })
              .catch(err=>{
@@ -83,6 +83,16 @@ class Controller {
         })
         .catch(err=>{
             res.json('err')
+        })
+    }
+
+    static list (req,res){
+        users.findAll({})
+        .then(data=>{
+            res.json(data)
+        })
+        .catch(err=>{
+            res.json(err)
         })
     }
 

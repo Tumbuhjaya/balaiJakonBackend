@@ -3,9 +3,11 @@ const app = express()
 const morgan = require('morgan')
 const cors =require('cors')
 const routing = require('./routing/index')
+const passport = require('passport')
 
 
-
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(morgan('dev'))
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))
@@ -14,7 +16,7 @@ app.use(express.json())
 
 app.use('/', routing)
 
-const port = 3008
+const port = 8805
 
 app.listen(port, () => {
   console.log(`socket telah tersambung pada port : ${port}`)
