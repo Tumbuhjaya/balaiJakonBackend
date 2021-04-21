@@ -19,5 +19,5 @@ app.use('/', routing)
 const port = 8805
 
 app.listen(port, () => {
-  console.log(`socket telah tersambung pada port : ${port}`)
+  console.log(` telah tersambung pada port : ${port}`)
 });
