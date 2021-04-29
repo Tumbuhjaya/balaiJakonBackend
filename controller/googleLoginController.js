@@ -16,7 +16,7 @@ class Controller{
         let role = req.user[0].dataValues.role
         let token = generateToken(req.user[0].dataValues)
         // res.redirect('http://namaweb.org/sukses?token='+token);   
-         res.redirect('http://localhost:8080/sukses?token='+token+'&'+id+'&'+role); 
+         res.redirect('http://localhost:8080/sukses?token='+token+'&id='+id+'&role='+role); 
   }
   static authFailed (req, res) {
     req.json({ message:"anda gagal login"})
