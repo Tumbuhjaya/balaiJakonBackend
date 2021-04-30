@@ -96,6 +96,19 @@ class Controller {
         })
     }
 
+    static details(req,res){
+        const{id}= req.params
+        users.findAll({where:{
+            id:id
+        }})
+        .then(data=>{
+            res.json(data)
+        })
+        .catch(err=>{
+            res.json(err)
+        })
+    }
+
     static delete (req,res){
         const {id}= req.params
         users.destroy({

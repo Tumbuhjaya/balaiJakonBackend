@@ -8,6 +8,7 @@ router.post('/login',controller.login)
 router.post('/approval/:id',authentification,controller.approval)
 router.get('/list',authentification,controller.list)
 router.post('/delete/:id',authentification,controller.delete)
+router.get('/details/:id',authentification,controller.details)
 
 
 module.exports=router
