@@ -8,7 +8,33 @@ class Controller{
              })
              .catch(err=>{
                  res.json(err)
-             })}
+             })
+        }
+
+    static listDocumentByUser(req,res){
+        document.findAll({where:{
+            userId:req.dataUsers.id
+        }})
+        .then(data=>{
+            res.json(data)
+        })
+        .catch(err=>{
+            res.json(err)
+        })
+    }
+
+    static download(req,res){
+        const {id}= req.params
+        const path = "/Asset/Images/"
+    document.findAll({where:{
+        id:id
+    }
+    })
+    .then(data=>{
+        console.log(data[0].dataValues.namaDocument)
+        res.download('/home/fosan/Documents/Puka/Project/balaiJakonBackend'+path+data[0].dataValues.namaDocument)
+    })
+ }
         
 }
 
