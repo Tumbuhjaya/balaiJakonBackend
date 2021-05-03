@@ -12,7 +12,7 @@ app.use(morgan('dev'))
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-
+app.use(express.static('Asset/Images'))
 
 app.use('/', routing)
 

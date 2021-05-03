@@ -5,10 +5,13 @@ const authentification=require('../middleware/authentification')
 
 router.post('/register',authentification,controller.register)
 router.post('/update/:id',authentification,controller.update)
-router.post('/changeStatus',authentification,controller.changeStatus)
+router.post('/changeStatus/:id',authentification,controller.changeStatus)
 router.get('/list',authentification,controller.list)
 router.get('/list/:id',authentification,controller.listById)
 router.post('/delete/:id',authentification,controller.delete)
+router.get('/listPelatihan01',authentification,controller.listPelatihan01)
+router.get('/listPelatihan23',authentification,controller.listPelatihan23)
+router.get('/listPelatihan4',authentification,controller.listPelatihan4)
 
 
 module.exports=router

@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sq =  require('../config/connection');
+const users = require('./usersModel');
 
 const masterPelatihan = sq.define('masterPelatihan',{
     id:{
@@ -20,6 +21,9 @@ const masterPelatihan = sq.define('masterPelatihan',{
     },
     tanggalPelatihan:{
         type:DataTypes.DATE
+    },
+    lokasi:{
+        type:DataTypes.STRING
     }
     
 },
@@ -27,6 +31,8 @@ const masterPelatihan = sq.define('masterPelatihan',{
 paranoid:true
 });
 
+masterPelatihan.belongsTo(users)
+users.hasMany(masterPelatihan)
 
 masterPelatihan.sync({ alter: true })
 module.exports = masterPelatihan
