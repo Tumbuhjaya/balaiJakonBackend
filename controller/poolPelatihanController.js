@@ -5,8 +5,8 @@ const sq = require('../config/connection')
 
 class Controller {
     static register(req, res){
-        const {keterangan,userId,masterPelatihanId}= req.body 
-                poolPelatihan.create({keterangan:keterangan,userId:userId,masterPelatihanId:masterPelatihanId}, {returning: true}).then(respon =>{
+        const {userId,masterPelatihanId}= req.body 
+                poolPelatihan.create({userId:userId,masterPelatihanId:masterPelatihanId}, {returning: true}).then(respon =>{
                 res.json(respon)
              })
              .catch(err=>{
@@ -15,9 +15,8 @@ class Controller {
         }
     static update(req,res){
         const {id}= req.params
-        const {keterangan,userId,masterPelatihanId}= req.body
+        const {userId,masterPelatihanId}= req.body
         poolPelatihan.update({
-            keterangan:keterangan,
             usersId:userId,
             masterPelatihanId:masterPelatihanId
         },{

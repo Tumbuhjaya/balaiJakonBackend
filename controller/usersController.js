@@ -1,6 +1,9 @@
 const users = require('../model/usersModel')
 const bcrypt = require('../helper/bcrypt')
 const jwt = require('../helper/jwt')
+const poolPelatihan = require('../model/poolPelatihanModel')
+
+
 
 
 function createSuperUser() {
@@ -41,6 +44,31 @@ class Controller {
              })}
         })
          
+      }
+
+      static registerToPelatihan(req,res){
+        const {username,password,role,nama,alamat,noHp,tempatLahir,tanggalLahir,noKTP,email,masterPelatihanId}= req.body
+        let encryptedPassword = bcrypt.hashPassword(password)
+          users.findAll({where:{
+              username:username
+          }})
+          .then(data=>{
+              if(data.length){
+                  res.json({message:"Username Sudah Terdaftar"})
+              }
+              else{
+                  users.create({username:username, password:encryptedPassword,nama:nama,alamat:alamat,role:role,noHp:noHp,tempatLahir:tempatLahir,tanggalLahir:tanggalLahir,noKTP:noKTP,email:email},{returning:true})
+                  .then(data2=>{
+                      poolPelatihan.create({userId:data2.dataValues.id,masterPelatihanId:masterPelatihanId})
+                      .then(data3=>{
+                          res.json({message:'sukses'})
+                      })
+                  })
+              }
+          })
+          .catch(err=>{
+              res.json({message:err})
+          })
       }
 
       static login(req,res){

@@ -8,9 +8,6 @@ const poolPelatihan = sq.define('poolPelatihan',{
         primaryKey: true,
         autoIncrement: true
     },
-    keterangan:{
-        type:DataTypes.INTEGER
-    }
     
 },
 {

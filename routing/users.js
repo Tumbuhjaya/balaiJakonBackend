@@ -9,6 +9,7 @@ router.post('/approval/:id',authentification,controller.approval)
 router.get('/list',authentification,controller.list)
 router.post('/delete/:id',authentification,controller.delete)
 router.get('/details/:id',authentification,controller.details)
+router.post('/registerToPelatihan',authentification,controller.registerToPelatihan)
 
 
 module.exports=router
