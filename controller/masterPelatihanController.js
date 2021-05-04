@@ -80,6 +80,19 @@ class Controller{
         })
     }
 
+    static listByUserId(req,res){
+        const{userId}= req.params
+        masterPelatihan.findAll({where:{
+            userId:userId
+        }})
+        .then(data=>{
+            res.json(data)
+        })
+        .catch(err=>{
+            res.json(err)
+        })
+    }
+
     static delete(req,res){
         const {id} = req.params
         masterPelatihan.destroy({

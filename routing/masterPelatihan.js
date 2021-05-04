@@ -12,6 +12,7 @@ router.post('/delete/:id',authentification,controller.delete)
 router.get('/listPelatihan01',authentification,controller.listPelatihan01)
 router.get('/listPelatihan23',authentification,controller.listPelatihan23)
 router.get('/listPelatihan4',authentification,controller.listPelatihan4)
+router.get('/listByUserId/:userId',authentification,controller.listByUserId)
 
 
 module.exports=router
