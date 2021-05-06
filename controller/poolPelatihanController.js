@@ -6,13 +6,24 @@ const sq = require('../config/connection')
 class Controller {
     static register(req, res){
         const {userId,masterPelatihanId}= req.body 
-                poolPelatihan.create({userId:userId,masterPelatihanId:masterPelatihanId}, {returning: true}).then(respon =>{
+                poolPelatihan.create({userId:userId,masterPelatihanId:masterPelatihanId,status:1}, {returning: true}).then(respon =>{
                 res.json(respon)
              })
              .catch(err=>{
                  res.json(err)
              })
         }
+
+    static join(req, res){
+        const {masterPelatihanId}= req.body 
+                poolPelatihan.create({userId:req.dataUsers.id,masterPelatihanId:masterPelatihanId,status:0}, {returning: true}).then(respon =>{
+                res.json(respon)
+             })
+             .catch(err=>{
+                 res.json(err)
+             })
+        }
+
     static update(req,res){
         const {id}= req.params
         const {userId,masterPelatihanId}= req.body
