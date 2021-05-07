@@ -10,6 +10,6 @@ router.get('/list',authentification,controller.list)
 router.post('/delete/:id',authentification,controller.delete)
 router.get('/details/:id',authentification,controller.details)
 router.post('/registerToPelatihan',authentification,controller.registerToPelatihan)
-
+router.get('/listPeserta',authentification,controller.listPeserta)
 
 module.exports=router

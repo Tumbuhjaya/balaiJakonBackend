@@ -2,6 +2,7 @@ const users = require('../model/usersModel')
 const bcrypt = require('../helper/bcrypt')
 const jwt = require('../helper/jwt')
 const poolPelatihan = require('../model/poolPelatihanModel')
+const sq = require('../config/connection')
 
 
 
@@ -149,6 +150,11 @@ class Controller {
         .catch(err=>{
             res.json(err)
         })
+    }
+
+    static async listPeserta(req,res){
+        let data = await sq.query(`select * from users u where u."role" ='peserta'or u."role" ='guest'`)
+        res.json(data[0])
     }
 
 }
