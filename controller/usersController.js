@@ -7,6 +7,7 @@ const sq = require('../config/connection')
 
 
 
+
 function createSuperUser() {
     let adminpass = bcrypt.hashPassword("balaiJakon")
     users.findOrCreate({
@@ -154,6 +155,18 @@ class Controller {
 
     static async listPeserta(req,res){
         let data = await sq.query(`select * from users u where u."role" ='peserta'or u."role" ='guest'`)
+        res.json(data[0])
+    }
+
+    static async listPesertaByRole(req,res){
+        const {role}= req.params
+        let data = await sq.query(`select * from users u where u."role" ='${role}'`)
+        res.json(data[0])
+    }
+
+    static async listPesertaPelatihan(req,res){
+        const{masterPelatihanId}= req.params
+        let data = await sq.query(`select u.* from users u where u.id not in(select pp."userId" from "poolPelatihans" pp where pp."masterPelatihanId" =${masterPelatihanId})`)
         res.json(data[0])
     }
 
