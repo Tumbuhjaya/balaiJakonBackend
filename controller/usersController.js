@@ -3,7 +3,7 @@ const bcrypt = require('../helper/bcrypt')
 const jwt = require('../helper/jwt')
 const poolPelatihan = require('../model/poolPelatihanModel')
 const sq = require('../config/connection')
-
+const importExcel= require('convert-excel-to-json')
 
 
 
@@ -27,7 +27,11 @@ class Controller {
 
     static register(req, res){
         const {username,password,role,nama,alamat,noHp,tempatLahir,tanggalLahir,noKTP,email}= req.body
-        let encryptedPassword = bcrypt.hashPassword(password)
+        let encryptedPassword =""
+        if(password){
+         encryptedPassword = bcrypt.hashPassword(password)
+        }
+        
         users.findAll({
             where:{
                 username:username
@@ -168,6 +172,48 @@ class Controller {
         const{masterPelatihanId}= req.params
         let data = await sq.query(`select u.* from users u where u.id not in(select pp."userId" from "poolPelatihans" pp where pp."masterPelatihanId" =${masterPelatihanId})`)
         res.json(data[0])
+    }
+
+
+    static insertExcel(req,res){
+      
+        let file = req.files.excelFile;
+        let namafile = Date.now() + file.name
+        
+
+        file.mv('./assets/excel/'+namafile,(async err=>{
+            if(err){
+                res.json(err)
+            }
+            else{
+                let result =  await importExcel({
+                    sourceFile :'./assets/excel/'+namafile,
+                    header     :   {rows:1},
+                    columnToKey:{A:'kegiatanPrioritas',B:'lokasi',C:'volume',D:'jumlahAnggaran',E:'pelaksana', F:'kesesuaian',G:'keterangan',H:'jenisAnggaran',I:'tahun',J:'jenisId'},
+                    sheets :['Sheet1']
+                    
+                });
+              
+
+                var hasil = result.Sheet1.map(function(el) {
+                    var o = Object.assign({}, el);
+                    o.kec = req.body.kec;
+                    o.kel = req.body.kel;
+                    return o;
+                  })
+
+                kegiatan.bulkCreate(hasil,{returning:true})
+                .then(data=>{
+                    del(['./assets/excel/'+namafile])
+                   res.json({message :"sukses"})
+                })
+                .catch(err=>{
+                    res.json(err)
+                })
+                
+                
+            }
+        }))
     }
 
 }

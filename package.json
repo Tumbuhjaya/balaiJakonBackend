@@ -18,6 +18,7 @@
   "homepage": "https://github.com/balaiJakon/backend_balaiJakon#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "convert-excel-to-json": "^1.7.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",

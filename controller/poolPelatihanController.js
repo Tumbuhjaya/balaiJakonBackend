@@ -3,6 +3,7 @@ const users = require('../model/usersModel')
 const masterPelatihan = require('../model/masterPelatihanModel')
 const sq = require('../config/connection')
 
+
 class Controller {
     static register(req, res){
         const {userId,masterPelatihanId}= req.body 
@@ -80,6 +81,9 @@ class Controller {
             res.json(err)
         })
     }
+
+
+    
 
 }
 
