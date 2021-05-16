@@ -176,35 +176,28 @@ class Controller {
 
 
     static insertExcel(req,res){
-      
+    
         let file = req.files.excelFile;
         let namafile = Date.now() + file.name
         
 
-        file.mv('./assets/excel/'+namafile,(async err=>{
+        file.mv('./Asset/excel/'+namafile,(async err=>{
             if(err){
                 res.json(err)
             }
             else{
                 let result =  await importExcel({
-                    sourceFile :'./assets/excel/'+namafile,
+                    sourceFile :'./Asset/excel/'+namafile,
                     header     :   {rows:1},
-                    columnToKey:{A:'kegiatanPrioritas',B:'lokasi',C:'volume',D:'jumlahAnggaran',E:'pelaksana', F:'kesesuaian',G:'keterangan',H:'jenisAnggaran',I:'tahun',J:'jenisId'},
+                    columnToKey:{A:'username',B:'role',C:'nama',D:'alamat',E:'noHp', F:'tempatLahir',G:'tanggalLahir',H:'noKTP',I:'approval',J:'email'},
                     sheets :['Sheet1']
                     
                 });
               
 
-                var hasil = result.Sheet1.map(function(el) {
-                    var o = Object.assign({}, el);
-                    o.kec = req.body.kec;
-                    o.kel = req.body.kel;
-                    return o;
-                  })
-
-                kegiatan.bulkCreate(hasil,{returning:true})
+                users.bulkCreate(result.Sheet1,{returning:true})
                 .then(data=>{
-                    del(['./assets/excel/'+namafile])
+                    del(['./Assets/excel/'+namafile])
                    res.json({message :"sukses"})
                 })
                 .catch(err=>{
