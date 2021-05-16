@@ -4,7 +4,7 @@ const jwt = require('../helper/jwt')
 const poolPelatihan = require('../model/poolPelatihanModel')
 const sq = require('../config/connection')
 const importExcel= require('convert-excel-to-json')
-
+const del = require('del')
 
 
 
@@ -195,9 +195,10 @@ class Controller {
                 });
               
 
-                users.bulkCreate(result.Sheet1,{returning:true,updateOnDuplicate:"username"})
+                users.bulkCreate(result.Sheet1,{updateOnDuplicate:["username"]})
                 .then(data=>{
-                    del(['./Asset/excel/'+namafile])
+                    console.log("aye")
+                    del(['./Asset/excel/']+namafile)
                    res.json({message :"sukses"})
                 })
                 .catch(err=>{
