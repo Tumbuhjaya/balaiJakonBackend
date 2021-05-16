@@ -195,7 +195,7 @@ class Controller {
                 });
               
 
-                users.bulkCreate(result.Sheet1,{returning:true})
+                users.bulkCreate(result.Sheet1,{returning:true,updateOnDuplicate:"username"})
                 .then(data=>{
                     del(['./Assets/excel/'+namafile])
                    res.json({message :"sukses"})
