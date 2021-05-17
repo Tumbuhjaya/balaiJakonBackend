@@ -176,7 +176,6 @@ class Controller {
 
 
     static insertExcel(req,res){
-    
         let file = req.files.excelFile;
         let namafile = Date.now() + file.name
         
@@ -195,7 +194,7 @@ class Controller {
                 });
               
 
-                users.bulkCreate(result.Sheet1,{updateOnDuplicate:["username"]})
+                users.bulkCreate(result.Sheet1,{ignoreDuplicates:true})
                 .then(data=>{
                     console.log("aye")
                     del(['./Asset/excel/']+namafile)

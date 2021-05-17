@@ -9,7 +9,8 @@ const users = sq.define('users',{
     },
     username:{
          type:DataTypes.STRING,
-         defaultValue:'',
+         unique:true
+       
     },
     password:{
         type:DataTypes.STRING,
