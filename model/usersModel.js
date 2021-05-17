@@ -42,6 +42,7 @@ const users = sq.define('users',{
     },
     approval:{
         type:DataTypes.INTEGER,
+        defaultValue:1
     },
     email:{
         type:DataTypes.STRING,

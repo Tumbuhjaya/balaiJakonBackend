@@ -188,7 +188,7 @@ class Controller {
                 let result =  await importExcel({
                     sourceFile :'./Asset/excel/'+namafile,
                     header     :   {rows:1},
-                    columnToKey:{A:'username',B:'role',C:'nama',D:'alamat',E:'noHp', F:'tempatLahir',G:'tanggalLahir',H:'noKTP',I:'approval',J:'email'},
+                    columnToKey:{A:'username',B:'role',C:'nama',D:'alamat',E:'noHp', F:'tempatLahir',G:'tanggalLahir',H:'noKTP',I:'email'},
                     sheets :['Sheet1']
                     
                 });

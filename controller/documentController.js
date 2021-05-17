@@ -25,14 +25,14 @@ class Controller{
 
     static download(req,res){
         const {id}= req.params
-        const path = "/Asset/Images/"
+        // const path = "/Asset/Images/"
     document.findAll({where:{
         id:id
     }
     })
     .then(data=>{
         console.log(data[0].dataValues.namaDocument)
-        res.download('/home/fosan/Documents/Puka/Project/balaiJakonBackend'+path+data[0].dataValues.namaDocument)
+        res.download('./Asset/Images/'+data[0].dataValues.namaDocument)
     })
  }
         
