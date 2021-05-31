@@ -27,10 +27,10 @@ class Controller {
 
     static register(req, res){
         const {username,password,role,nama,alamat,noHp,tempatLahir,tanggalLahir,noKTP,email}= req.body
-        let encryptedPassword =""
+       let encryptedPassword =""
         if(password){
          encryptedPassword = bcrypt.hashPassword(password)
-        }
+       }
         
         users.findAll({
             where:{

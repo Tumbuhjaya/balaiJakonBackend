@@ -7,46 +7,20 @@ const users = sq.define('users',{
         primaryKey: true,
         autoIncrement: true
     },
-    username:{
-         type:DataTypes.STRING,
-         unique:true
-       
-    },
-    password:{
-        type:DataTypes.STRING,
-        defaultValue:''
-    },
-    role:{
-        type:DataTypes.STRING,
-        defaultValue:""
-    },
-    nama:{
-        type:DataTypes.STRING,
-        defaultValue:""
-    },
-    alamat:{
-        type:DataTypes.STRING,
-        defaultValue:""
-    },
-    noHp:{
-        type:DataTypes.STRING,     
-    },
-    tempatLahir:{
-        type:DataTypes.STRING,
-    },
-    tanggalLahir:{
-        type:DataTypes.DATE
-    },
-    noKTP:{
+    email:{
         type:DataTypes.STRING
     },
-    approval:{
-        type:DataTypes.INTEGER,
-        defaultValue:1
+    password:{
+        type:DataTypes.STRING
     },
-    email:{
-        type:DataTypes.STRING,
-        defaultValue:""
+    nama:{
+        type:DataTypes.STRING
+    },
+    noHp:{
+        type:DataTypes.STRING
+    },
+    peran:{
+        type:DataTypes.STRING
     }
     
 },
