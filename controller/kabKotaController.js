@@ -14,7 +14,7 @@ class Controller{
 
 
     static findByProvinsi(req,res){
-        const {provinsiId}=req.body
+        const {provinsiId}=req.params
         kabKota.findAll({
             where:{
                 provinsiId:provinsiId
