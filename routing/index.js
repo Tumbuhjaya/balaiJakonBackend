@@ -7,6 +7,7 @@ const document = require('./document')
 const provinsi = require('./provinsi')
 const excel = require('./excel')
 const kabKota = require('./kabKota')
+const usersDJBK = require('./usersDJBK')
 
 
 router.use('/users',users)
@@ -17,6 +18,7 @@ router.use('/document',document)
 router.use('/provinsi',provinsi)
 router.use('/excel',excel)
 router.use('/kabKota',kabKota)
+router.use('/usersDJBK',usersDJBK)
 
 
 module.exports=router

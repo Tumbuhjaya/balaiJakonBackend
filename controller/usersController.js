@@ -13,7 +13,7 @@ function createSuperUser() {
     users.findOrCreate({
 
         where: {
-            username: "balaiJakon"
+            email: "balaiJakon"
         },
         defaults: {
             password: adminpass,
@@ -26,7 +26,7 @@ createSuperUser()
 class Controller {
 
     static register(req, res){
-        const {username,password,role,nama,alamat,noHp,tempatLahir,tanggalLahir,noKTP,email}= req.body
+        const {email,nama,noHp,role,password}= req.body
        let encryptedPassword =""
         if(password){
          encryptedPassword = bcrypt.hashPassword(password)
@@ -34,15 +34,16 @@ class Controller {
         
         users.findAll({
             where:{
-                username:username
+                email:email
             }
         }).then(data=>{
             if(data.length){
-                res.json({message :"Username Sudah Terdaftar"})
+                res.json({message :"email Sudah Terdaftar"})
             }
             else{
                 
-                users.create({username:username, password:encryptedPassword,nama:nama,alamat:alamat,role:role,noHp:noHp,tempatLahir:tempatLahir,tanggalLahir:tanggalLahir,noKTP:noKTP,email:email}, {returning: true}).then(respon =>{
+                users.create({email:email,password:encryptedPassword,nama:nama,noHp:noHp,role:role}, {returning: true})
+                .then(respon =>{
                 res.json(respon)
              })
              .catch(err=>{
@@ -51,6 +52,7 @@ class Controller {
         })
          
       }
+
 
       static registerToPelatihan(req,res){
         const {username,password,role,nama,alamat,noHp,tempatLahir,tanggalLahir,noKTP,email,masterPelatihanId}= req.body

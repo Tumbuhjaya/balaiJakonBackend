@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 const sq =  require('../config/connection');
-const users= require('../model/usersModel')
+const users= require('./usersModel')
 
-const userDJBK = sq.define('userDJBK',{
+const usersDJBK = sq.define('usersDJBK',{
     id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -33,8 +33,8 @@ const userDJBK = sq.define('userDJBK',{
 paranoid:true
 });
 
-userDJBK.belongsTo(users)
-users.hasMany(userDJBK)
+usersDJBK.belongsTo(users)
+users.hasMany(usersDJBK)
 
-userDJBK.sync({ alter: true })
-module.exports = userDJBK
+usersDJBK.sync({ alter: true })
+module.exports = usersDJBK

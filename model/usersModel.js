@@ -19,7 +19,7 @@ const users = sq.define('users',{
     noHp:{
         type:DataTypes.STRING
     },
-    peran:{
+    role:{
         type:DataTypes.STRING
     }
     
