@@ -80,10 +80,10 @@ class Controller {
       }
 
       static login(req,res){
-        const{username,password}= req.body
+        const{email,password}= req.body
         users.findAll({
             where:{
-                username:username
+                email:email
             }
         })
         .then(data=>{
@@ -96,7 +96,7 @@ class Controller {
                     res.json({message : "password salah"})
                 }
             }
-            else{res.json({message :"username tidak terdaftar"})}
+            else{res.json({message :"email tidak terdaftar"})}
         })
         .catch(err=>{
             res.json({message : err})
