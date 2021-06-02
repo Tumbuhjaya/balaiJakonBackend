@@ -37,11 +37,11 @@ class Controller{
       }
 
       static update(req,res){
-        const {nama,noHp,organisasi,provinsiAlamatOrganisasi,kabKotaAlamatOrganisasi,uraianAlamatUnitKerja}= req.body
+        const {nama,noHp,organisasi,provinsiAlamatOrganisasi,kabKotaAlamatOrganisasi,uraianAlamatUnitKerja,jenisOrganisasi}= req.body
 
           users.update({nama:nama,noHp:noHp})
           .then(data1=>{
-            usersPenggunaJasa.update({organisasi,provinsiAlamatOrganisasi,kabKotaAlamatOrganisasi,uraianAlamatUnitKerja})
+            usersPenggunaJasa.update({organisasi,provinsiAlamatOrganisasi,kabKotaAlamatOrganisasi,uraianAlamatUnitKerja,jenisOrganisasi})
               .then(data2=>{
                   res.json({message:"sukses"})
               })
@@ -52,7 +52,7 @@ class Controller{
     }
 
     static async profile(req,res){
-      let data = await sq.query(`select * from users u join "usersDJBKs" ud on u.id = ud."userId" where u.id=${req.dataUsers.id} `)
+      let data = await sq.query(`select * from users u join "usersPenggunaJasas" ud on u.id = ud."userId" where u.id=${req.dataUsers.id} `)
       res.json(data[0])
     }
 }

@@ -1,33 +1,38 @@
 const { DataTypes } = require('sequelize');
 const sq =  require('../config/connection');
+const users= require('./usersModel')
 
-const usersPenggunaJasa = sq.define('usersPenggunaJasa',{
+const usersMitra = sq.define('usersMitra',{
     id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    organisasi:{
+    lembaga:{
         type:DataTypes.STRING
     },
-    provinsiAlamatOrganisasi:{
+    provinsiAlamatLembaga:{
         type:DataTypes.STRING
     },
-    kabKotaAlamatOrganisasi:{
+    kabKotaAlamatLembaga:{
         type:DataTypes.STRING
     },
-    uraianAlamatUnitKerja:{
+    uraianAlamatLembaga:{
         type:DataTypes.STRING
     },
-    jenisOrganisasi:{
+    jabatan:{
+        type:DataTypes.STRING
+    },
+    jenisLembaga:{
         type:DataTypes.STRING
     }
-    
 },
 {
 paranoid:true
 });
 
+usersMitra.belongsTo(users)
+users.hasMany(usersMitra)
 
-usersPenggunaJasa.sync({ alter: true })
-module.exports = usersPenggunaJasa
+usersMitra.sync({ alter: true })
+module.exports = usersMitra
