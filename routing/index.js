@@ -7,10 +7,12 @@ const document = require('./document')
 const provinsi = require('./provinsi')
 const excel = require('./excel')
 const kabKota = require('./kabKota')
+const DJBK = require('./DJBK')
 const usersDJBK = require('./usersDJBK')
 const usersMitra = require('./usersMitra')
-const DJBK = require('./DJBK')
-
+const usersSiswa = require('./usersSiswa')
+const usersPenggunaJasa = require('./usersPenggunaJasa')
+const usersPJM = require('./usersPJM')
 
 router.use('/users',users)
 router.use('/auth',auth)
@@ -23,6 +25,9 @@ router.use('/kabKota',kabKota)
 router.use('/usersDJBK',usersDJBK)
 router.use('/usersMitra',usersMitra)
 router.use('/DJBK',DJBK)
+router.use('/usersSiswa',usersSiswa)
+router.use('/usersPenggunaJasa',usersPenggunaJasa)
+router.use('/usersPJM',usersPJM)
 
 
 module.exports=router

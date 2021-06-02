@@ -8,25 +8,17 @@ const usersMitra = sq.define('usersMitra',{
         primaryKey: true,
         autoIncrement: true
     },
-    namaUnitKerja:{
-        type:DataTypes.STRING,
-        defaultValue:""
+    kabKotaAlamat:{
+        type:DataTypes.STRING
     },
-    provinsiAlamatUnitKerja:{
-        type:DataTypes.STRING,
-        defaultValue:""
+    uraianAlamat:{
+        type:DataTypes.STRING
     },
-    kabKotaAlamatUnitKerja:{
-        type:DataTypes.STRING,
-        defaultValue:""
+    lembagaPendidikanSaatIni:{
+        type:DataTypes.STRING
     },
-    uraianAlamatUnitKerja:{
-        type:DataTypes.STRING,
-        defaultValue:""
-    },
-    jabatan:{
-        type:DataTypes.STRING,
-        defaultValue:""
+    jenisLembaga:{
+        type:DataTypes.STRING
     }
 },
 {
