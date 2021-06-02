@@ -10,19 +10,15 @@ const usersPenggunaJasa = sq.define('usersPenggunaJasa',{
     organisasi:{
         type:DataTypes.STRING
     },
-    kementerianPUPR:{
+    provinsiAlamatOrganisasi:{
         type:DataTypes.STRING
     },
-    lembagaLain:{
-        type:DataTypes.STRING,
-        defaultValue:""
-    },
-    pemprov:{
+    kabKotaAlamatOrganisasi:{
         type:DataTypes.STRING
     },
-    pemkab:{
+    uraianAlamatUnitKerja:{
         type:DataTypes.STRING
-    },
+    }
     
 },
 {

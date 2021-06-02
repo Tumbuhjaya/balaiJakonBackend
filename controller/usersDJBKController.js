@@ -1,7 +1,7 @@
 const usersDJBK = require('../model/usersDJBKModel')
 const users = require('../model/usersModel')
-const bcrypt = require('../helper/bcrypt')
-const jwt = require('../helper/jwt')
+const sq = require('../config/connection')
+
 
 class Controller{
 
@@ -34,6 +34,25 @@ class Controller{
              })}
         })
          
+      }
+
+      static update(req,res){
+          const {nama:nama,noHp:noHp,namaUnitKerja,provinsiAlamatUnitKerja,kabKotaAlamatUnitKerja,uraianAlamatUnitKerja}= req.body
+
+            users.update({nama:nama,noHp:noHp})
+            .then(data1=>{
+                usersDJBK.update({namaUnitKerja:namaUnitKerja,provinsiAlamatUnitKerja:provinsiAlamatUnitKerja,kabKotaAlamatUnitKerja:kabKotaAlamatUnitKerja,uraianAlamatUnitKerja:uraianAlamatUnitKerja})
+                .then(data2=>{
+                    res.json({message:"sukses"})
+                })
+            })
+            .catch(err=>{
+                res.json({message:err})
+            })
+      }
+
+      static async profile(req,res){
+
       }
 
 }
