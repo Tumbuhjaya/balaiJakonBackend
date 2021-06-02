@@ -11,7 +11,7 @@ router.post('/delete/:id',authentification,controller.delete)
 router.get('/details/:id',authentification,controller.details)
 router.post('/registerToPelatihan',authentification,controller.registerToPelatihan)
 router.get('/listPeserta',authentification,controller.listPeserta)
-router.get('/listPesertaByRole',authentification,controller.listPesertaByRole)
+router.get('/listPesertaByRole/:role',authentification,controller.listPesertaByRole)
 router.get('/listPesertaPelatihan/:masterPelatihanId',authentification,controller.listPesertaPelatihan)
 router.post('/importExcel',controller.insertExcel)
 
