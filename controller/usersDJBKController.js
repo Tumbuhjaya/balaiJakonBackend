@@ -1,7 +1,7 @@
 const usersDJBK = require('../model/usersDJBKModel')
 const users = require('../model/usersModel')
 const sq = require('../config/connection')
-
+const bcrypt = require('../helper/bcrypt')
 
 class Controller{
 
