@@ -52,7 +52,8 @@ class Controller{
       }
 
       static async profile(req,res){
-
+        let data = await sq.query(`select * from users u join "usersDJBKs" ud on u.id = ud."userId" where u.id=${req.dataUsers.id} `)
+        res.json(data[0])
       }
 
 }
