@@ -9,6 +9,7 @@ const excel = require('./excel')
 const kabKota = require('./kabKota')
 const usersDJBK = require('./usersDJBK')
 const usersMitra = require('./usersMitra')
+const DJBK = require('./DJBK')
 
 
 router.use('/users',users)
@@ -21,6 +22,7 @@ router.use('/excel',excel)
 router.use('/kabKota',kabKota)
 router.use('/usersDJBK',usersDJBK)
 router.use('/usersMitra',usersMitra)
+router.use('/DJBK',DJBK)
 
 
 module.exports=router
