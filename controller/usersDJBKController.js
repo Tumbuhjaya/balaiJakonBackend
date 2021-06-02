@@ -37,11 +37,11 @@ class Controller{
       }
 
       static update(req,res){
-          const {nama:nama,noHp:noHp,namaUnitKerja,provinsiAlamatUnitKerja,kabKotaAlamatUnitKerja,uraianAlamatUnitKerja}= req.body
+          const {nama,noHp,namaUnitKerja,provinsiAlamatUnitKerja,kabKotaAlamatUnitKerja,uraianAlamatUnitKerja}= req.body
 
-            users.update({nama:nama,noHp:noHp})
+            users.update({nama,noHp})
             .then(data1=>{
-                usersDJBK.update({namaUnitKerja:namaUnitKerja,provinsiAlamatUnitKerja:provinsiAlamatUnitKerja,kabKotaAlamatUnitKerja:kabKotaAlamatUnitKerja,uraianAlamatUnitKerja:uraianAlamatUnitKerja})
+                usersDJBK.update({namaUnitKerja,provinsiAlamatUnitKerja,kabKotaAlamatUnitKerja,uraianAlamatUnitKerja})
                 .then(data2=>{
                     res.json({message:"sukses"})
                 })
