@@ -41,7 +41,9 @@ class Controller{
 
             users.update({nama,noHp})
             .then(data1=>{
-                usersSiswa.update({kabKotaAlamat,uraianAlamat,lembagaPendidikanSaatIni,jenisLembaga})
+                usersSiswa.update({kabKotaAlamat,uraianAlamat,lembagaPendidikanSaatIni,jenisLembaga},{where:{
+                    userId:req.dataUsers.id
+                }})
                 .then(data2=>{
                     res.json({message:"sukses"})
                 })
