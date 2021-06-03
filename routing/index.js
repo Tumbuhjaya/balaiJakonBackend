@@ -14,6 +14,7 @@ const usersSiswa = require('./usersSiswa')
 const usersPenggunaJasa = require('./usersPenggunaJasa')
 const usersPJM = require('./usersPJM')
 const usersPJTK = require('./usersPJTK')
+const usersInstruktur = require('./usersInstruktur')
 
 router.use('/users',users)
 router.use('/auth',auth)
@@ -29,7 +30,8 @@ router.use('/DJBK',DJBK)
 router.use('/usersSiswa',usersSiswa)
 router.use('/usersPenggunaJasa',usersPenggunaJasa)
 router.use('/usersPJM',usersPJM)
-router.use('usersPJTK',usersPJTK)
+router.use('/usersPJTK',usersPJTK)
+router.use('/usersInstruktur',usersInstruktur)
 
 
 module.exports=router

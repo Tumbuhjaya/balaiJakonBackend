@@ -60,6 +60,24 @@ class Controller{
         res.json(data[0])
       }
 
+      static uploadKTP(req, res) {
+        users
+          .update(
+            { fotoKTP: req.file.filename },
+            {
+              where: {
+                id: req.dataUsers.id,
+              },
+            }
+          )
+          .then((data) => {
+            res.json({ message: "update foto sukses" });
+          })
+          .catch((err) => {
+            res.json({message:err});
+          });
+      }
+
 }
 
 
