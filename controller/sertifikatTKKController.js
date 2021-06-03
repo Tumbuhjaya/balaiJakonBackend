@@ -52,6 +52,30 @@ class Controller{
             res.json(err)
         })
     }
+
+    static listunverified(req,res){
+        sertifikatTKK.findAll({where:{
+            statusVerifikasi:0
+        }})
+        .then(data=>{
+            res.json(data)
+        })
+        .catch(err=>{
+            res.json(err)
+        })
+    }
+    static delete(req,res){
+        const {id}= req.body
+        sertifikatTKK.destroy({where:{
+            id:id
+        }})
+        .then(data=>{{
+            res.json({message:"sukses"})
+        }})
+        .catch(err=>{
+            res.json({message:err})
+        })
+    }
 }
 
 module.exports=Controller
