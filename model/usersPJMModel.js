@@ -8,6 +8,12 @@ const usersPJM = sq.define('usersPJM',{
         primaryKey: true,
         autoIncrement: true
     },
+    namaPerusahaan:{
+        type:DataTypes.STRING
+    },
+    provinsiAlamatPerusahaan:{
+        type:DataTypes.STRING
+    },
    kabKotaAlamatPerusahaan:{
        type:DataTypes.STRING
    },
