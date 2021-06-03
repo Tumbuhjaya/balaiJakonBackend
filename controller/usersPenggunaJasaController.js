@@ -1,7 +1,7 @@
 const usersPenggunaJasa= require('../model/usersPenggunaJasaModel')
 const bcrypt = require('../helper/bcrypt')
 const users = require('../model/usersModel')
-
+const sq = require('../config/connection')
 
 class Controller{
 

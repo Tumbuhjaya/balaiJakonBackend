@@ -15,6 +15,7 @@ const usersPenggunaJasa = require('./usersPenggunaJasa')
 const usersPJM = require('./usersPJM')
 const usersPJTK = require('./usersPJTK')
 const usersInstruktur = require('./usersInstruktur')
+const sertifikatTKK = require('./sertifikatTKK')
 
 router.use('/users',users)
 router.use('/auth',auth)
@@ -32,6 +33,7 @@ router.use('/usersPenggunaJasa',usersPenggunaJasa)
 router.use('/usersPJM',usersPJM)
 router.use('/usersPJTK',usersPJTK)
 router.use('/usersInstruktur',usersInstruktur)
+router.use('/sertifikatTKK',sertifikatTKK)
 
 
 module.exports=router

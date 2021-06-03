@@ -4,9 +4,9 @@ const morgan = require('morgan')
 const cors =require('cors')
 const routing = require('./routing/index')
 const passport = require('passport')
-const fileUpload = require('express-fileupload')
+// const fileUpload = require('express-fileupload')
 
-app.use(fileUpload());
+// app.use(fileUpload());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(morgan('dev'))
