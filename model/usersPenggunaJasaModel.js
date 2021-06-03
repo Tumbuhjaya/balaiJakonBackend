@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sq =  require('../config/connection');
-
+const users = require('../model/usersModel')
 const usersPenggunaJasa = sq.define('usersPenggunaJasa',{
     id:{
         type: DataTypes.INTEGER,
@@ -28,6 +28,8 @@ const usersPenggunaJasa = sq.define('usersPenggunaJasa',{
 paranoid:true
 });
 
+usersPenggunaJasa.belongsTo(users)
+users.hasMany(usersPenggunaJasa)
 
 usersPenggunaJasa.sync({ alter: true })
 module.exports = usersPenggunaJasa
