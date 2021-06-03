@@ -1,4 +1,4 @@
-const usersMitra = require('../model/usersMitraModel')
+const usersPJTK = require('../model/usersPJTKModel')
 const users = require('../model/usersModel')
 const sq = require('../config/connection')
 const bcrypt = require('../helper/bcrypt')
@@ -24,7 +24,7 @@ class Controller{
                 users.create({email:email,password:encryptedPassword,nama:nama,noHp:noHp,role:role}, {returning: true})
                 .then(respon =>{
                     console.log(respon.dataValues.id)
-                usersMitra.create({userId:respon.dataValues.id})
+                usersPJTK.create({userId:respon.dataValues.id})
                 .then(respon2=>{
                     res.json({message:"sukses"})
                 })
@@ -37,13 +37,13 @@ class Controller{
       }
 
       static update(req,res){
-          const {nama,noHp,lembaga,provinsiAlamatLembaga,kabKotaAlamatLembaga,uraianAlamatLembaga,jabatan,jenisLembaga}= req.body
+          const {nama,noHp,kabKotaDomisili,uraianAlamatDomisili,pendidikanTertinggi,pendapatanPerbulan,statusPekerjaan,namaPerusahaan}= req.body
 
-            users.update({nama,noHp},{where:{
+            users.update({nama:nama,noHp:noHp},{where:{
                 id:req.dataUsers.id
             }})
             .then(data1=>{
-                usersMitra.update({lembaga,provinsiAlamatLembaga,kabKotaAlamatLembaga,uraianAlamatLembaga,jabatan,jenisLembaga},{where:{
+                usersPJTK.update({kabKotaDomisili,uraianAlamatDomisili,pendidikanTertinggi,pendapatanPerbulan,statusPekerjaan,namaPerusahaan},{where:{
                     userId:req.dataUsers.id
                 }})
                 .then(data2=>{
@@ -56,7 +56,7 @@ class Controller{
       }
 
       static async profile(req,res){
-        let data = await sq.query(`select * from users u join "usersMitras" ud on u.id = ud."userId" where u.id=${req.dataUsers.id} `)
+        let data = await sq.query(`select * from users u join "usersPJTKs" ud on u.id = ud."userId" where u.id=${req.dataUsers.id} `)
         res.json(data[0])
       }
 

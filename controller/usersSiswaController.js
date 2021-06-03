@@ -39,7 +39,9 @@ class Controller{
       static update(req,res){
           const {nama,noHp,kabKotaAlamat,uraianAlamat,lembagaPendidikanSaatIni,jenisLembaga}= req.body
 
-            users.update({nama,noHp})
+            users.update({nama,noHp},{where:{
+                id:req.dataUsers.id
+            }})
             .then(data1=>{
                 usersSiswa.update({kabKotaAlamat,uraianAlamat,lembagaPendidikanSaatIni,jenisLembaga},{where:{
                     userId:req.dataUsers.id

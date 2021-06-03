@@ -9,7 +9,22 @@ const usersPJTK = sq.define('usersPJTK',{
         autoIncrement: true
     },
     kabKotaDomisili:{
-        
+        type:DataTypes.STRING
+    },
+    uraianAlamatDomisili:{
+        type:DataTypes.STRING
+    },
+    pendidikanTertinggi:{
+        type:DataTypes.STRING
+    },
+    pendapatanPerbulan:{
+        type:DataTypes.INTEGER
+    },
+    statusPekerjaan:{
+        type:DataTypes.STRING
+    },
+    namaPerusahaan:{
+        type:DataTypes.STRING
     }
 
 },
