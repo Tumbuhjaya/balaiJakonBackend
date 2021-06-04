@@ -15,7 +15,7 @@ class Controller{
 
     static async findByProvinsi(req,res){
         const {namaProvinsi}=req.params
-        let data = await sq.query(`select * from "kabKota" kk join provinsis p ON kk."provinsiId" =p.id where p."namaProvinsi" =${namaProvinsi}`)
+        let data = await sq.query(`select * from "kabKota" kk join provinsis p ON kk."provinsiId" =p.id where p."namaProvinsi" ='${namaProvinsi}'`)
         res.json(data[0])
     }
         
