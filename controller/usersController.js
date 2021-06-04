@@ -53,6 +53,22 @@ class Controller {
          
       }
 
+      static changePP(req, res) {
+        users.update(
+            { foto: req.file.filename },
+            {
+              where: {
+                id: req.dataUsers.id,
+              },
+            }
+          )
+          .then((data) => {
+            res.json({ message: "sukses" });
+          })
+          .catch((err) => {
+            res.json({message:err});
+          });
+      }
 
       static registerToPelatihan(req,res){
         const {username,password,role,nama,alamat,noHp,tempatLahir,tanggalLahir,noKTP,email,masterPelatihanId}= req.body

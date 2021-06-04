@@ -1,5 +1,5 @@
 const kabKota = require('../model/kabKotaModel')
-
+const sq = require('../config/connection')
 class Controller{
 
     static all(req,res){
@@ -13,20 +13,12 @@ class Controller{
     }
 
 
-    static findByProvinsi(req,res){
-        const {provinsiId}=req.params
-        kabKota.findAll({
-            where:{
-                provinsiId:provinsiId
-            }
-        })
-        .then(data=>{
-            res.json(data)
-        })
-        .catch(err=>{
-            res.json(err)
-        })
+    static async findByProvinsi(req,res){
+        const {namaProvinsi}=req.params
+        let data = await sq.query(`select * from "kabKota" kk join provinsis p ON kk."provinsiId" =p.id where p."namaProvinsi" =${namaProvinsi}`)
+        res.json(data[0])
     }
+        
 }
 
 module.exports=Controller

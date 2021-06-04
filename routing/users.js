@@ -1,9 +1,11 @@
 const controller = require('../controller/usersController')
+const upload = require('../helper/upload')
 const router = require('express').Router()
 const authentification=require('../middleware/authentification')
 
 
 router.post('/register',controller.register)
+router.post('/changePP',authentification,upload,controller.changePP)
 router.post('/login',controller.login)
 router.post('/approval/:id',authentification,controller.approval)
 router.get('/list',authentification,controller.list)
