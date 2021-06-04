@@ -17,6 +17,7 @@ const usersPJTK = require('./usersPJTK')
 const usersInstruktur = require('./usersInstruktur')
 const sertifikatTKK = require('./sertifikatTKK')
 const pengalamanKerja = require('./pengalamanKerja')
+const pendidikanPelatihan= require('./pendidikanPelatihan')
 
 router.use('/users',users)
 router.use('/auth',auth)
@@ -36,6 +37,7 @@ router.use('/usersPJTK',usersPJTK)
 router.use('/usersInstruktur',usersInstruktur)
 router.use('/sertifikatTKK',sertifikatTKK)
 router.use('/pengalamanKerja',pengalamanKerja)
+router.use('/pendidikanPelatihan',pendidikanPelatihan)
 
 
 module.exports=router
