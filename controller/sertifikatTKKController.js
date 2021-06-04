@@ -1,3 +1,4 @@
+const sq = require('../config/connection')
 const sertifikatTKK = require('../model/sertifikatTKKModel')
 
 class Controller{
@@ -81,6 +82,13 @@ class Controller{
             res.json(err)
         })
     }
+
+    static async countUnverified(req,res){
+        let data = await sq.query(`select count(*) as jumlah from "sertifikatTKKs" st where "statusVerifikasi" =0`)
+        res.json(data[0][0])
+    }
+
+
     static delete(req,res){
         const {id}= req.body
         sertifikatTKK.destroy({where:{

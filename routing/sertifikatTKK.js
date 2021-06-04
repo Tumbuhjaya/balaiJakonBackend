@@ -10,5 +10,6 @@ router.get('/listByUsers',authentification,controller.listByUser)
 router.get('/unverified',authentification,controller.listunverified)
 router.post('/editFile',authentification,upload,controller.editFile)
 router.post('/delete',authentification,controller.delete)
+router.get('/countUnverified',authentification,controller.countUnverified)
 
 module.exports=router
