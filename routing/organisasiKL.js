@@ -1,4 +1,4 @@
-const controller = require('../controller/organisasiPUPRController')
+const controller = require('../controller/organisasiKLController')
 const router = require('express').Router()
 const authentification=require('../middleware/authentification')
 
