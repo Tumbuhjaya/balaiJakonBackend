@@ -20,6 +20,7 @@ const pengalamanKerja = require('./pengalamanKerja')
 const pendidikanPelatihan= require('./pendidikanPelatihan')
 const pengalamanMengajar = require('./pengalamanMengajar')
 const organisasiPUPR = require('./organisasiPUPR')
+const organisasiKL = require('./organisasiKL')
 
 router.use('/users',users)
 router.use('/auth',auth)
@@ -42,6 +43,7 @@ router.use('/pengalamanKerja',pengalamanKerja)
 router.use('/pendidikanPelatihan',pendidikanPelatihan)
 router.use('/pengalamanMengajar',pengalamanMengajar)
 router.use('/organisasiPUPR',organisasiPUPR)
+router.use('/organisasiKL',organisasiKL)
 
 
 module.exports=router
