@@ -16,7 +16,7 @@ const usersPenggunaJasa = sq.define('usersPenggunaJasa',{
     kabKotaAlamatOrganisasi:{
         type:DataTypes.STRING
     },
-    uraianAlamatUnitKerja:{
+    uraianAlamatOrganisasi:{
         type:DataTypes.STRING
     },
     jenisOrganisasi:{
