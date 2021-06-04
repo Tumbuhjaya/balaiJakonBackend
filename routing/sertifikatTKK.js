@@ -9,5 +9,6 @@ router.post('/update',authentification,controller.update)
 router.get('/listByUsers',authentification,controller.listByUser)
 router.get('/unverified',authentification,controller.listunverified)
 router.post('/editFile',authentification,upload,controller.editFile)
+router.post('/delete',authentification,controller.delete)
 
 module.exports=router

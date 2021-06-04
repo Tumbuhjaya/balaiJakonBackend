@@ -1,20 +1,20 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, DATE } = require('sequelize');
 const sq =  require('../config/connection');
 const users= require('./usersModel')
 
-const pengalamanKerja = sq.define('pengalamanKerja',{
+const pengalamanMengajar = sq.define('pengalamanMengajar',{
     id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    namaPekerjaan:{
+    bidang:{
         type:DataTypes.STRING
     },
-    statusKerja:{
+    subBidang:{
         type:DataTypes.STRING
     },
-    namaPerusahaan:{
+    materi:{
         type:DataTypes.STRING
     },
     tanggalMulai:{
@@ -23,23 +23,16 @@ const pengalamanKerja = sq.define('pengalamanKerja',{
     tanggalSelesai:{
         type:DataTypes.DATE
     },
-    uraianPeran:{
-        type:DataTypes.STRING
-    },
-    penghasilanPerBulan:{
-        type:DataTypes.INTEGER
-    },
-    suratKeteranganKerja:{
+    suratKeteranganMengajar:{
         type:DataTypes.STRING
     }
-   
 },
 {
 
 });
 
-pengalamanKerja.belongsTo(users)
-users.hasMany(pengalamanKerja)
+pengalamanMengajar.belongsTo(users)
+users.hasMany(pengalamanMengajar)
 
-pengalamanKerja.sync({ alter: true })
-module.exports = pengalamanKerja
+pengalamanMengajar.sync({ alter: true })
+module.exports = pengalamanMengajar

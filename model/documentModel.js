@@ -17,7 +17,7 @@ const document = sq.define('document',{
     
 },
 {
-paranoid:true
+
 });
 
 document.belongsTo(users)

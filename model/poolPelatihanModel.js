@@ -14,7 +14,7 @@ const poolPelatihan = sq.define('poolPelatihan',{
     }
 },
 {
-paranoid:true
+
 });
 
 poolPelatihan.belongsTo(users)

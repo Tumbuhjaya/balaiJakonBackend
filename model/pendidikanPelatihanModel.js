@@ -23,7 +23,7 @@ const pendidikanPelatihan = sq.define('pendidikanPelatihan',{
    
 },
 {
-paranoid:true
+
 });
 
 pendidikanPelatihan.belongsTo(users)

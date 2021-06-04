@@ -29,7 +29,7 @@ const sertifikatTKK = sq.define('sertifikatTKK',{
     }
 },
 {
-paranoid:true
+
 });
 
 sertifikatTKK.belongsTo(users)

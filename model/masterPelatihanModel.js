@@ -28,7 +28,7 @@ const masterPelatihan = sq.define('masterPelatihan',{
     
 },
 {
-paranoid:true
+
 });
 
 masterPelatihan.belongsTo(users)

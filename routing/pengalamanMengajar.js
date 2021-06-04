@@ -1,4 +1,4 @@
-const controller = require('../controller/pengalamanKerjaController')
+const controller = require('../controller/pengalamanMengajarController')
 const upload = require('../helper/upload')
 const router = require('express').Router()
 const authentification=require('../middleware/authentification')
