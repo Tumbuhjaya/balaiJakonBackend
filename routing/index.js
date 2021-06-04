@@ -19,6 +19,7 @@ const sertifikatTKK = require('./sertifikatTKK')
 const pengalamanKerja = require('./pengalamanKerja')
 const pendidikanPelatihan= require('./pendidikanPelatihan')
 const pengalamanMengajar = require('./pengalamanMengajar')
+const organisasiPUPR = require('./organisasiPUPR')
 
 router.use('/users',users)
 router.use('/auth',auth)
@@ -40,6 +41,7 @@ router.use('/sertifikatTKK',sertifikatTKK)
 router.use('/pengalamanKerja',pengalamanKerja)
 router.use('/pendidikanPelatihan',pendidikanPelatihan)
 router.use('/pengalamanMengajar',pengalamanMengajar)
+router.use('/organisasiPUPR',organisasiPUPR)
 
 
 module.exports=router

@@ -1,9 +1,9 @@
-const DJBK =require('../model/DJBKModel')
+const organisasiPUPR =require('../model/organisasiPUPRModel')
 
 class Controller{
 
     static all(req,res){
-        DJBK.findAll()
+        organisasiPUPR.findAll()
         .then(data=>{
             res.json(data)
         })
@@ -13,8 +13,8 @@ class Controller{
     }
 
     static register(req,res){
-        const{namaDJBK}= req.body
-        DJBK.create({namaDJBK:namaDJBK},{returning:true})
+        const{namaorganisasiPUPR}= req.body
+        organisasiPUPR.create({namaorganisasiPUPR:namaorganisasiPUPR},{returning:true})
         .then(data=>{
             res.json(data)
         })
@@ -23,7 +23,7 @@ class Controller{
         })
     }
 
-
+   
 }
 
 module.exports=Controller

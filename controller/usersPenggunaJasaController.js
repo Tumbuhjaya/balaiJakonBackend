@@ -37,13 +37,13 @@ class Controller{
       }
 
       static update(req,res){
-        const {nama,noHp,organisasi,provinsiAlamatOrganisasi,kabKotaAlamatOrganisasi,uraianAlamatUnitKerja,jenisOrganisasi}= req.body
+        const {nama,noHp,organisasi,provinsiAlamatOrganisasi,kabKotaAlamatOrganisasi,uraianAlamatUnitOrganisasi,jenisOrganisasi}= req.body
 
           users.update({nama:nama,noHp:noHp},{where:{
             id:req.dataUsers.id
         }})
           .then(data1=>{
-            usersPenggunaJasa.update({organisasi,provinsiAlamatOrganisasi,kabKotaAlamatOrganisasi,uraianAlamatUnitKerja,jenisOrganisasi},{where:{
+            usersPenggunaJasa.update({organisasi,provinsiAlamatOrganisasi,kabKotaAlamatOrganisasi,uraianAlamatUnitOrganisasi,jenisOrganisasi},{where:{
                 userId:req.dataUsers.id
             }})
               .then(data2=>{
