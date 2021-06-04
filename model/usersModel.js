@@ -21,6 +21,9 @@ const users = sq.define('users',{
     },
     role:{
         type:DataTypes.STRING
+    },
+    foto:{
+        type:DataTypes.STRING
     }
     
 },

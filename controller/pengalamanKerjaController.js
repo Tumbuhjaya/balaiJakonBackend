@@ -14,7 +14,23 @@ class Controller{
         })
     }
 
-
+    static editFile(req, res) {
+        const{id}= req.body
+        pengalamanKerja.update(
+            { suratKeteranganKerja: req.file.filename },
+            {
+              where: {
+                id: id,
+              },
+            }
+          )
+          .then((data) => {
+            res.json({ message: "sukses" });
+          })
+          .catch((err) => {
+            res.json({message:err});
+          });
+      }
 
     static update(req,res){
         const{id,namaPekerjaan,statusKerja,namaPerusahaan,tanggalMulai,tanggalSelesai,uraianPeran,penghasilanPerBulan}= req.body

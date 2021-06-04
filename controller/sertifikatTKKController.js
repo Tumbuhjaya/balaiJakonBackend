@@ -14,6 +14,23 @@ class Controller{
         })
     }
 
+    static editFile(req, res) {
+        const{id}= req.body
+        sertifikatTKK.update(
+            { dokumen: req.file.filename },
+            {
+              where: {
+                id: id,
+              },
+            }
+          )
+          .then((data) => {
+            res.json({ message: "sukses" });
+          })
+          .catch((err) => {
+            res.json({message:err});
+          });
+      }
 
     static verifikasi(req,res){
         const{id,statusVerifikasi} = req.body

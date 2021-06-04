@@ -29,6 +29,24 @@ class Controller{
         })
     }
 
+    static editFile(req, res) {
+        const{id}= req.body
+        pendidikanPelatihan.update(
+            { uploadSKP: req.file.filename },
+            {
+              where: {
+                id: id,
+              },
+            }
+          )
+          .then((data) => {
+            res.json({ message: "sukses" });
+          })
+          .catch((err) => {
+            res.json({message:err});
+          });
+      }
+
     static listByUser(req,res){
         pendidikanPelatihan.findAll({where:{
             userId:req.dataUsers.id
