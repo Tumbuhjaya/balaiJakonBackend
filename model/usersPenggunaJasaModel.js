@@ -21,6 +21,9 @@ const usersPenggunaJasa = sq.define('usersPenggunaJasa',{
     },
     jenisOrganisasi:{
         type:DataTypes.STRING
+    },
+    jabatan:{
+        type:DataTypes.STRING
     }
     
 },
