@@ -13,8 +13,8 @@ class Controller{
     }
 
     static register(req,res){
-        const{namaorganisasiKL}= req.body
-        organisasiKL.create({namaorganisasiKL:namaorganisasiKL},{returning:true})
+        const{namaOrganisasiKL}= req.body
+        organisasiKL.create({namaOrganisasiKL:namaOrganisasiKL},{returning:true})
         .then(data=>{
             res.json(data)
         })

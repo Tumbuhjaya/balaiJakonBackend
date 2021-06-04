@@ -8,7 +8,7 @@ const organisasiKL = sq.define('organisasiKL',{
         primaryKey: true,
         autoIncrement: true
     },
-    namaorganisasiKL:{
+    namaOrganisasiKL:{
         type:DataTypes.STRING
     }
     
