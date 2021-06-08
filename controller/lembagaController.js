@@ -4,14 +4,25 @@ class Controller{
 
     static register(req,res){
         const{jenisLembaga,namaLembaga,provinsiLembaga,kabKotaLembaga,uraianAlamatLembaga} = req.body
+        lembaga.findAll({where:{
+            namaLembaga:namaLembaga
+        }})
+        .then(hasil=>{
+            if(hasil){
+                res.json({message:"lembaga sudah terdaftar"})
+            }
+            else{
+                lembaga.create({jenisLembaga,namaLembaga,provinsiLembaga,kabKotaLembaga,uraianAlamatLembaga},{returning:true})
+                .then(data=>{
+                    res.json(data)
+                })
+                .catch(err=>{
+                    res.json(err)
+                })
+            }
+        })
 
-        lembaga.create({jenisLembaga,namaLembaga,provinsiLembaga,kabKotaLembaga,uraianAlamatLembaga},{returning:true})
-        .then(data=>{
-            res.json(data)
-        })
-        .catch(err=>{
-            res.json(err)
-        })
+        
     }
 
     static list(req,res){

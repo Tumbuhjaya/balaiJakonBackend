@@ -37,13 +37,13 @@ class Controller{
       }
 
       static update(req,res){
-          const {nama,noHp,lembaga,provinsiAlamatLembaga,kabKotaAlamatLembaga,uraianAlamatLembaga,jabatan,jenisLembaga}= req.body
+          const {nama,noHp,jabatan,lembagaId}= req.body
 
             users.update({nama,noHp},{where:{
                 id:req.dataUsers.id
             }})
             .then(data1=>{
-                usersMitra.update({lembaga,provinsiAlamatLembaga,kabKotaAlamatLembaga,uraianAlamatLembaga,jabatan,jenisLembaga},{where:{
+                usersMitra.update({jabatan,lembagaId},{where:{
                     userId:req.dataUsers.id
                 }})
                 .then(data2=>{
@@ -56,7 +56,7 @@ class Controller{
       }
 
       static async profile(req,res){
-        let data = await sq.query(`select * from users u join "usersMitras" ud on u.id = ud."userId" where u.id=${req.dataUsers.id} `)
+        let data = await sq.query(`select * from users u join "usersMitras" um on u.id =um."userId" join lembagas l on l.id = um."lembagaId" where u.id = ${req.dataUsers.id}`)
         res.json(data[0])
       }
 
