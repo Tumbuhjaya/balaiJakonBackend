@@ -30,7 +30,7 @@ class Controller{
         .then(data=>{
             res.json(data)
         })
-        .err(err=>{
+        .catch(err=>{
             res.json(err)
         })
     }
@@ -51,13 +51,13 @@ class Controller{
             })
     }
 
-    static listById(req,res){
-        const {id}= req.params
+    static listByJenisLembaga(req,res){
+        const {jenisLembaga}= req.params
         lembaga.findAll({where:{
-            id:id
+            jenisLembaga:jenisLembaga
         }})
         .then(data=>{
-            res.json({message:"sukses"})
+            res.json(data)
         })
         .catch(err=>{
             res.json(err)

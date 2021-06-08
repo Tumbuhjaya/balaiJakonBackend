@@ -4,7 +4,7 @@ const authentification=require('../middleware/authentification')
 
 router.get('/all',authentification,controller.list)
 router.post('/register',authentification,controller.register)
-router.get('/listById/:id',authentification,controller.listById)
+router.get('/listByLembaga/:jenisLembaga',authentification,controller.listByJenisLembaga)
 router.post('/delete/:id',authentification,controller.delete)
 router.post('/update/:id',authentification,controller.update)
 
