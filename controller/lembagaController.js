@@ -8,7 +8,7 @@ class Controller{
             namaLembaga:namaLembaga
         }})
         .then(hasil=>{
-            if(hasil){
+            if(hasil.length){
                 res.json({message:"lembaga sudah terdaftar"})
             }
             else{
