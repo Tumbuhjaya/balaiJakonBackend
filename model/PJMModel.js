@@ -8,6 +8,9 @@ const PJM = sq.define('PJM',{
         primaryKey: true,
         autoIncrement: true
     },
+    jenisPJM:{
+        type:DataTypes.STRING
+    },
     namaPJM:{
         type:DataTypes.STRING
     },

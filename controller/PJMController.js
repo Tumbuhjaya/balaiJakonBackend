@@ -3,7 +3,7 @@ const PJM = require('../model/PJMModel')
 class Controller{
 
     static register(req,res){
-        const{namaPJM,provinsiPJM,kabKotaPJM,uraianAlamatPJM} = req.body
+        const{namaPJM,provinsiPJM,kabKotaPJM,uraianAlamatPJM,jenisPJM} = req.body
         PJM.findAll({where:{
             namaPJM:namaPJM
         }})
@@ -12,7 +12,7 @@ class Controller{
                 res.json({message:"PJM sudah terdaftar"})
             }
             else{
-                PJM.create({namaPJM,provinsiPJM,kabKotaPJM,uraianAlamatPJM},{returning:true})
+                PJM.create({namaPJM,provinsiPJM,kabKotaPJM,uraianAlamatPJM,jenisPJM},{returning:true})
                 .then(data=>{
                     res.json(data)
                 })
@@ -55,6 +55,19 @@ class Controller{
         const {namaPJM}= req.params
         PJM.findAll({where:{
             namaPJM:namaPJM
+        }})
+        .then(data=>{
+            res.json(data)
+        })
+        .catch(err=>{
+            res.json(err)
+        })
+    }
+
+    static listByJenisPJM(req,res){
+        const {jenisPJM}= req.params
+        PJM.findAll({where:{
+            jenisPJM:jenisPJM
         }})
         .then(data=>{
             res.json(data)
