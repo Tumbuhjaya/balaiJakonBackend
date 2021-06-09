@@ -22,6 +22,7 @@ const pengalamanMengajar = require('./pengalamanMengajar')
 const organisasiPUPR = require('./organisasiPUPR')
 const organisasiKL = require('./organisasiKL')
 const lembaga = require('./lembaga')
+const PJM = require('./PJM')
 
 router.use('/users',users)
 router.use('/auth',auth)
@@ -46,6 +47,7 @@ router.use('/pengalamanMengajar',pengalamanMengajar)
 router.use('/organisasiPUPR',organisasiPUPR)
 router.use('/organisasiKL',organisasiKL)
 router.use('/lembaga',lembaga)
+router.use('/PJM',PJM)
 
 
 module.exports=router
