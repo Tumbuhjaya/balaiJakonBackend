@@ -23,6 +23,7 @@ const organisasiPUPR = require('./organisasiPUPR')
 const organisasiKL = require('./organisasiKL')
 const lembaga = require('./lembaga')
 const PJM = require('./PJM')
+const dataKlasifikasi=require('./dataKlasifikasi')
 
 router.use('/users',users)
 router.use('/auth',auth)
@@ -48,6 +49,7 @@ router.use('/organisasiPUPR',organisasiPUPR)
 router.use('/organisasiKL',organisasiKL)
 router.use('/lembaga',lembaga)
 router.use('/PJM',PJM)
+router.use('/dataKlasifikasi',dataKlasifikasi)
 
 
 module.exports=router
