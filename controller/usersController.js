@@ -53,6 +53,11 @@ class Controller {
          
       }
 
+    static async showPP(req,res){
+        let data = await sq.query(`select u.foto from users u where u.id = ${req.dataUsers.id}`)
+        res.json(data[0])
+    }
+
       static changePP(req, res) {
         users.update(
             { foto: req.file.filename },
