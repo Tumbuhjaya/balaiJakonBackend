@@ -14,7 +14,7 @@ class Controller{
     }
 
     static listKlasifikasi(req,res){
-        const{jenjang}= req.body
+        const{jenjang}= req.params
 
         dataKlasifikasi.findAll({where:{
             jenjang:jenjang
@@ -28,7 +28,7 @@ class Controller{
     }
 
     static listSubKlasifikasi(req,res){
-        const {jenjang,klasifikasi}= req.body
+        const {jenjang,klasifikasi}= req.params
         dataKlasifikasi.findAll({where:{
             jenjang:jenjang,
             klasifikasi:klasifikasi
