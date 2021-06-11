@@ -1,44 +1,23 @@
 const dataKlasifikasi = require('../model/dataKlasifikasiModel')
+const sq = require('../config/connection')
 
 class Controller{
 
-
     static list(req,res){
-        dataKlasifikasi.findAll({})
-        .then(data=>{
-            res.json(data)
-        })
-        .catch(err=>{
-            res.json(err)
-        })
+    let data = sq.query(`select distinct jenjang from "dataKlasifikasis" dk`)
+    res.json(data[0])
     }
 
     static listKlasifikasi(req,res){
         const{jenjang}= req.params
-
-        dataKlasifikasi.findAll({where:{
-            jenjang:jenjang
-        }})
-        .then(data=>{
-            res.json(data)
-        })
-        .catch(err=>{
-            res.json(err)
-        })
+        let data=sq.query(`select distinct klasifikasi from "dataKlasifikasis" dk where jenjang = '${jenjang}'`)
+        res.json(data[0])
     }
 
     static listSubKlasifikasi(req,res){
         const {jenjang,klasifikasi}= req.params
-        dataKlasifikasi.findAll({where:{
-            jenjang:jenjang,
-            klasifikasi:klasifikasi
-        }})
-        .then(data=>{
-            res.json(data)
-        })
-        .catch(err=>{
-            res.json(err)
-        })
+     let data = sq.query(`select "subKlasifikasi" ,"kodeSubKlaisifikasi" from "dataKlasifikasis" dk where jenjang = '${jenjang}' and klasifikasi ='${klasifikasi}'`)
+        res.json(data[0])
     }
 }
 
