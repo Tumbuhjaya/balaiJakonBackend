@@ -78,6 +78,13 @@ class Controller{
           });
       }
 
+
+      static async allByRole(req,res){
+        const {role}= req.params
+        let data = await sq.query(`select * from "usersInstrukturs" ui join users u on u.id = ui."userId" and u."role" ='${role}'`)
+        res.json(data[0])
+      }
+
 }
 
 
