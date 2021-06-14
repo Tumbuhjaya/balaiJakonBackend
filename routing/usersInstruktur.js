@@ -7,7 +7,7 @@ router.post('/register',controller.register)
 router.post('/update',authentification,controller.update)
 router.get('/profile',authentification,controller.profile)
 router.post('/uploadKTP',authentification,controller.uploadKTP)
-router.get('/allByRole',authentification,controller.allByRole)
+router.get('/allByRole/:role',authentification,controller.allByRole)
 
 
 module.exports=router
