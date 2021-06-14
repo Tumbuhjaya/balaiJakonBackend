@@ -61,12 +61,12 @@ class Controller{
       }
 
       static uploadKTP(req, res) {
-        users
+        usersInstruktur
           .update(
             { fotoKTP: req.file.filename },
             {
               where: {
-                id: req.dataUsers.id,
+                userId: req.dataUsers.id,
               },
             }
           )
