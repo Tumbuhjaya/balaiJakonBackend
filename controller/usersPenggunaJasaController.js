@@ -59,6 +59,10 @@ class Controller{
       let data = await sq.query(`select * from users u join "usersPenggunaJasas" ud on u.id = ud."userId" where u.id=${req.dataUsers.id} `)
       res.json(data[0])
     }
+    static async all(req,res){
+        let data = await sq.query(`select * from "usersPenggunaJasas" upj join users u on upj ."userId" = u.id `)
+        res.json(data[0])
+      }
 }
 
 module.exports=Controller

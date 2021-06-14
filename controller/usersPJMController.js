@@ -60,6 +60,11 @@ class Controller{
         res.json(data[0])
       }
 
+      static async all(req,res){
+        let data = await sq.query(`select * from "usersPJMs" up join users u on up."userId" = u.id  `)
+        res.json(data[0])
+      }
+
 }
 
 
