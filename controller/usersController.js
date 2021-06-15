@@ -232,6 +232,42 @@ class Controller {
         }))
     }
 
+
+    static async profileByAdmin(req,res){
+        console.log('asdsad')
+        const {id}= req.params
+        let check = await sq.query(`select "role" from users u where id = ${id}`)
+
+        if(check[0][0].role=='siswa'){
+            let data = await sq.query(`select * from users u join "usersSiswas" ud on u.id = ud."userId" where u.id=${id} `)
+            res.json(data[0])
+        }
+        else if(check[0][0].role== 'kementerian'||check[0][0].role== 'OPD' ){
+            let data = await sq.query(`select * from users u join "usersPenggunaJasas" ud on u.id = ud."userId" where u.id=${id} `)
+            res.json(data[0])
+        }
+        else if(check[0][0].role=='PJTK'){
+            let data = await sq.query(`select * from users u join "usersPJTKs" ud on u.id = ud."userId" where u.id=${id} `)
+             res.json(data[0])
+        }
+        else if(check[0][0].role=='konsultan'|| check[0][0]=='kontraktor'){
+            let data = await sq.query(`select * from users u join "usersPJMs" ud on u.id = ud."userId" where u.id=${id} `)
+            res.json(data[0])
+        }
+        else if(check[0][0].role=='instruktur'|| check[0][0]=='asesor'){
+            let data = await sq.query(`select * from users u join "usersInstrukturs" ud on u.id = ud."userId" where u.id=${id} `)
+            res.json(data[0])
+        }
+        else if(check[0][0].role=='DJBKM'|| check[0][0]=='DJBK'){
+            let data = await sq.query(`select * from users u join "usersDJBKs" ud on u.id = ud."userId" where u.id=${id} `)
+             res.json(data[0])
+        }
+        else if(check[0][0].role=='politeknik'|| check[0][0]=='perguruanTinggi' || check[0][0].role=='SMK'){
+            let data = await sq.query(`select * from users u join "usersMitras" um on u.id =um."userId" join lembagas l on l.id = um."lembagaId" where u.id = ${id}`)
+            res.json(data[0])
+        }
+    }
+
 }
 
 

@@ -17,5 +17,6 @@ router.get('/listPesertaByRole/:role',authentification,controller.listPesertaByR
 router.get('/listPesertaPelatihan/:masterPelatihanId',authentification,controller.listPesertaPelatihan)
 router.post('/importExcel',controller.insertExcel)
 router.get('/showPP',authentification,controller.showPP)
+router.get('/profileByAdmin/:id',controller.profileByAdmin)
 
 module.exports=router

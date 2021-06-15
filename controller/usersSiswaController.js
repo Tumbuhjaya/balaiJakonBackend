@@ -60,6 +60,7 @@ class Controller{
         res.json(data[0])
       }
 
+
       static uploadKTP(req, res) {
         usersSiswa
           .update(
