@@ -111,16 +111,16 @@ class Controller {
             if(data.length){
         let hasil =  bcrypt.compare(password, data[0].dataValues.password);
                 if(hasil){
-                    res.json([{token : jwt.generateToken(data[0].dataValues)},{id:data[0].id},{role:data[0].role}])
+                    res.status(200).json([{status: 200,token : jwt.generateToken(data[0].dataValues)},{id:data[0].id},{role:data[0].role}])
                 }
                 else{
-                    res.json({message : "password salah"})
+                    res.status(200).json({ status: 200, message: "password Salah"})
                 }
             }
-            else{res.json({message :"email tidak terdaftar"})}
+            else{res.status(200).json({ status: 200, message: "email Tidak Terdaftar"})}
         })
         .catch(err=>{
-            res.json({message : err})
+            res.status(500).json({ status: 500, message: "gagal", data: err})
         })
     }
 
