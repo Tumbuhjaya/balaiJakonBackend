@@ -263,7 +263,7 @@ class Controller {
              res.json(data[0])
         }
         else if(check[0][0].role=='politeknik'|| check[0][0]=='perguruanTinggi' || check[0][0].role=='SMK'){
-            let data = await sq.query(`select * from users u join "usersMitras" um on u.id =um."userId" join lembagas l on l.id = um."lembagaId" where u.id = ${id}`)
+            let data = await sq.query(`select u.*,um.jabatan ,l."jenisLembaga" ,l."kabKotaLembaga" ,l.id as "idLembaga",l."namaLembaga" ,l."provinsiLembaga" ,l."uraianAlamatLembaga" from users u join "usersMitras" um on u.id =um."userId" left join lembagas l on l.id = um."lembagaId" where u.id = ${id}`)
             res.json(data[0])
         }
     }
