@@ -250,19 +250,19 @@ class Controller {
             let data = await sq.query(`select * from users u join "usersPJTKs" ud on u.id = ud."userId" where u.id=${id} `)
              res.json(data[0])
         }
-        else if(check[0][0].role=='konsultan'|| check[0][0]=='kontraktor'){
+        else if(check[0][0].role=='konsultan'|| check[0][0].role=='kontraktor'){
             let data = await sq.query(`select * from users u join "usersPJMs" ud on u.id = ud."userId" where u.id=${id} `)
             res.json(data[0])
         }
-        else if(check[0][0].role=='instruktur'|| check[0][0]=='asesor'){
+        else if(check[0][0].role=='instruktur'|| check[0][0].role=='asesor'){
             let data = await sq.query(`select * from users u join "usersInstrukturs" ud on u.id = ud."userId" where u.id=${id} `)
             res.json(data[0])
         }
-        else if(check[0][0].role=='DJBKM'|| check[0][0]=='DJBK'){
+        else if(check[0][0].role=='DJBKM'|| check[0][0].role=='DJBKP'){
             let data = await sq.query(`select * from users u join "usersDJBKs" ud on u.id = ud."userId" where u.id=${id} `)
              res.json(data[0])
         }
-        else if(check[0][0].role=='politeknik'|| check[0][0]=='perguruanTinggi' || check[0][0].role=='SMK'){
+        else if(check[0][0].role=='politeknik'|| check[0][0].role=='perguruanTinggi' || check[0][0].role=='SMK'){
             let data = await sq.query(`select u.*,um.jabatan ,l."jenisLembaga" ,l."kabKotaLembaga" ,l.id as "idLembaga",l."namaLembaga" ,l."provinsiLembaga" ,l."uraianAlamatLembaga" from users u join "usersMitras" um on u.id =um."userId" left join lembagas l on l.id = um."lembagaId" where u.id = ${id}`)
             res.json(data[0])
         }
